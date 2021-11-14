@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchAttractionDetail } from "../../../fetchData";
-import { ScenicSpotTourismInfo } from "../../../interface";
+import { fetchActivityDetail } from "../../fetchData";
+import { Activity } from "../../interface";
 
 export default function AttractionDetail() {
   const { ID } = useParams();
-  const [data, setData] = useState<ScenicSpotTourismInfo>(null);
+  const [data, setData] = useState<Activity>(null);
   const [dataLoaded, setDataLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    fetchAttractionDetail(ID).then((data) => {
+    fetchActivityDetail(ID).then((data) => {
       setData(data[0]);
       setDataLoaded(true);
     });

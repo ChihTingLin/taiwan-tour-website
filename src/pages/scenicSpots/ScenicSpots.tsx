@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Select from "../../components/DropdownSelect/Select";
 import { cityList } from "../../staticData";
-import { fetchAttractionsByCity } from "../../fetchData";
+import { fetchScenicSpotsByCity } from "../../fetchData";
 import { ScenicSpotTourismInfo } from "../../interface";
 
 function Attractions() {
-  const [attractions, setAttractions] = useState<ScenicSpotTourismInfo[]>([]);
+  const [scenicSpots, setScenicSpots] = useState<ScenicSpotTourismInfo[]>([]);
   const [city, setCity] = useState<string>("");
   useEffect(() => {
     if (city) {
-      fetchAttractionsByCity(city).then((data) => {
-        setAttractions(data[0]);
+      fetchScenicSpotsByCity(city).then((data) => {
+        setScenicSpots(data);
       });
     }
   }, [city]);
@@ -20,26 +20,26 @@ function Attractions() {
     <div>
       <h1>探索景點</h1>
       <Select options={cityList} onChange={(s) => setCity(s.value)} />
-      {city && attractions && (
+      {city && scenicSpots && (
         <div>
           <h3>搜尋結果</h3>
-          <div>共有 {attractions.length} 筆</div>
+          <div>共有 {scenicSpots.length} 筆</div>
         </div>
       )}
-      {attractions.map((at) => (
-        <div key={at.ID}>
-          <Link to={`/attraction/${at.ID}`}>
+      {scenicSpots.map((scen) => (
+        <div key={scen.ID}>
+          <Link to={`/scenic-spots/${scen.ID}`}>
             <img
               src={
-                at.Picture.PictureUrl1 ||
-                at.Picture.PictureUrl2 ||
-                at.Picture.PictureUrl3
+                scen.Picture.PictureUrl1 ||
+                scen.Picture.PictureUrl2 ||
+                scen.Picture.PictureUrl3
               }
-              alt={at.Name}
+              alt={scen.Name}
               width="200"
             />
           </Link>
-          <div>{at.Name}</div>
+          <div>{scen.Name}</div>
         </div>
       ))}
     </div>
