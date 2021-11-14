@@ -44,7 +44,7 @@ export default function Detail({
     <div>
       <div>
         {images.map((img) => (
-          <img src={img.url} alt={img.alt} />
+          <img src={img.url} alt={img.alt} key={img.url}/>
         ))}
       </div>
       <h1>{name}</h1>
