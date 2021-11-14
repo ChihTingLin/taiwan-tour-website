@@ -28,18 +28,22 @@ function Attractions() {
       )}
       {scenicSpots.map((scen) => (
         <div key={scen.ID}>
-          <Link to={`/scenic-spots/${scen.ID}`}>
-            <img
-              src={
-                scen.Picture.PictureUrl1 ||
-                scen.Picture.PictureUrl2 ||
-                scen.Picture.PictureUrl3
-              }
-              alt={scen.Name}
-              width="200"
-            />
+          <Link to={`/scenic-spot/${scen.ID}`}>
+            {scen.Picture.PictureUrl1 ||
+              scen.Picture.PictureUrl2 ||
+              (scen.Picture.PictureUrl3 && (
+                <img
+                  src={
+                    scen.Picture.PictureUrl1 ||
+                    scen.Picture.PictureUrl2 ||
+                    scen.Picture.PictureUrl3
+                  }
+                  alt={scen.Name}
+                  width="200"
+                />
+              ))}
+            <div>{scen.Name}</div>
           </Link>
-          <div>{scen.Name}</div>
         </div>
       ))}
     </div>

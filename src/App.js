@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/index";
-import Attractions from "./pages/attractions/Attractions";
-import AttractionDetail from "./pages/attractions/attractionDetail/AttractionDetail";
-import ActivityDetail from "./pages/activities/activityDetail/ActivityDetail";
+import ScenicSpots from "./pages/scenicSpots/ScenicSpots";
+import ScenicSpotDetail from "./pages/scenicSpots/ScenicSpotDetail";
+import ActivityDetail from "./pages/activities/ActivityDetail";
 import CityDetail from "./pages/city/CityDetail";
+import Activities from "./pages/activities/Activities";
+import RestaurantDetail from "./pages/restaurants/RestaurantDetail";
 import "normalize.css";
 
 function App() {
@@ -13,10 +15,12 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/attractions" element={<Attractions />} />
-          <Route path="/attraction/:ID" element={<AttractionDetail />} />
+          <Route path="/scenic-spots" element={<ScenicSpots />} />
+          <Route path="/scenic-spot/:ID" element={<ScenicSpotDetail />} />
+          <Route path="/activities" element={<Activities />} />
           <Route path="/activity/:ID" element={<ActivityDetail />} />
           <Route path="/city/:city" element={<CityDetail />} />
+          <Route path="/restaurant/:ID" element={<RestaurantDetail />} />
         </Routes>
       </Layout>
     </BrowserRouter>

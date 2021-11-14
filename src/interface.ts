@@ -1,4 +1,4 @@
-interface TourismPicture {
+export interface TourismPicture {
   PictureDescriptional1?: string;
   PictureUrl1: string;
   PictureDescriptional2?: string;
@@ -13,17 +13,51 @@ interface PointType {
   PositionLon: number;
 }
 
-export interface Activity {
-  Address?: string;
-  Class1?: string;
-  Class2?: string;
-  EndTime?: Date;
+export interface RestaurantTourismInfo {
   ID: string;
   Name?: string;
+  Description?: string;
+  Address?: string;
+  ZipCode?: string;
+  Phone?: string;
+  OpenTime?: string;
+  WebsiteUrl?: string;
   Picture?: TourismPicture;
-  SrcUpdateTime?: Date;
-  StartTime?: Date;
-  UpdateTime?: Date;
+  Position?: PointType;
+  Class?: string;
+  MapUrl?: string;
+  ParkingInfo?: string;
+  City?: string;
+  SrcUpdateTime: string;
+  UpdateTime: string;
+}
+
+export interface ActivityTourismInfo {
+  ID: string;
+  Name?: string;
+  Description?: string;
+  Particpation?: string;
+  Location?: string;
+  Address?: string;
+  Phone?: string;
+  Organizer?: string;
+  StartTime?: string;
+  EndTime?: string;
+  Cycle?: string;
+  NonCycle?: string;
+  WebsiteUrl?: string;
+  Picture?: TourismPicture;
+  Position?: string;
+  Class1?: string;
+  Class2?: string;
+  MapUrl?: string;
+  TravelInfo?: string;
+  ParkingInfo?: string;
+  Charge?: string;
+  Remarks?: string;
+  City?: string;
+  SrcUpdateTime: string;
+  UpdateTime: string;
 }
 
 export interface ScenicSpotTourismInfo {
@@ -32,7 +66,7 @@ export interface ScenicSpotTourismInfo {
   DescriptionDetail?: string;
   Desccription?: string;
   Phone?: string;
-  Addres?: string;
+  Address?: string;
   ZipCode?: string;
   TravelInfo?: string;
   OpenTime?: string;
@@ -50,6 +84,6 @@ export interface ScenicSpotTourismInfo {
   Remarks?: string;
   Keyword?: string;
   City?: string;
-  SrcUpdateTime: Date;
-  UpdateTime: Date;
+  SrcUpdateTime: string;
+  UpdateTime: string;
 }

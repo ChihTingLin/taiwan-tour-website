@@ -1,5 +1,5 @@
 .headerWrapper {
-  padding: 20px 45px;
+  padding: 12px 45px;
   background-color: var(--white);
   border-bottom: 1px solid var(--light-grey);
   display: flex;
@@ -17,4 +17,5 @@
   max-width: 1200px;
   margin: auto;
   min-height: calc(100vh - 116px);
+  padding: 0 30px;
 }

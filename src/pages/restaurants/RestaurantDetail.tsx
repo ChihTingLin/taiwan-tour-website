@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchRestaurantDetail } from "../../fetchData";
 import { RestaurantTourismInfo } from "../../interface";
+import Detail from "../../components/detail/Detail";
 
 export default function RestaurantDetail() {
   const { ID } = useParams();
@@ -14,5 +15,14 @@ export default function RestaurantDetail() {
     });
   }, [ID]);
   if (!dataLoaded) return null;
-  return <div>{data.Name}</div>;
+  return (
+    <Detail
+      type="Restaurant"
+      pictures={data.Picture}
+      name={data.Name}
+      description={data.Description}
+      restaurant={data}
+      categories={[data.Class]}
+    />
+  );
 }

@@ -32,3 +32,15 @@ a {
   text-decoration: none;
   color: var(--theme-color);
 }
+
+.display-flex {
+  display: flex;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-vertical {
+  flex-direction: column;
+}
