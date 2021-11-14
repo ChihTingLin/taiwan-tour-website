@@ -55,7 +55,7 @@ export async function fetchScenicSpotDetail(ID: string) {
 export async function fetchRamdonActivity() {
   const headers = getAuthHeader();
   const res = await fetch(
-    `${apiPrefix}/Tourism/Activity/?$select=ID,Name,Address,Picture,Class1,Class2&$filter=Picture/PictureUrl1 ne null&$top=8&format=JSON`,
+    `${apiPrefix}/Tourism/Activity/?$select=ID,Name,Address,Picture,Class1,Class2&$filter=Picture/PictureUrl1 ne null&$top=30&format=JSON`,
     { headers }
   );
   const result: ActivityTourismInfo[] = await res.json();
@@ -65,7 +65,7 @@ export async function fetchRamdonActivity() {
 export async function fetchRamdonRestaurant() {
   const headers = getAuthHeader();
   const res = await fetch(
-    `${apiPrefix}/Tourism/Restaurant/?$select=ID,Name,Address,Picture,Class1,Class2&$filter=Picture/PictureUrl1 ne null&$top=8&format=JSON`,
+    `${apiPrefix}/Tourism/Restaurant/?$select=ID,Name,Address,Picture,Class&$filter=Picture/PictureUrl1 ne null&$top=30&format=JSON`,
     { headers }
   );
   const result: RestaurantTourismInfo[] = await res.json();

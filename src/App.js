@@ -7,6 +7,7 @@ import ActivityDetail from "./pages/activities/ActivityDetail";
 import CityDetail from "./pages/city/CityDetail";
 import Activities from "./pages/activities/Activities";
 import RestaurantDetail from "./pages/restaurants/RestaurantDetail";
+import Restaurants from "./pages/restaurants/Restaurants";
 import "normalize.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/activities" element={<Activities />} />
           <Route path="/activity/:ID" element={<ActivityDetail />} />
           <Route path="/city/:city" element={<CityDetail />} />
+          <Route path="/restaurants" element={<Restaurants />} />
           <Route path="/restaurant/:ID" element={<RestaurantDetail />} />
         </Routes>
       </Layout>
