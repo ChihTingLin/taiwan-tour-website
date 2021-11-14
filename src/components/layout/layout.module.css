@@ -1,0 +1,20 @@
+.headerWrapper {
+  padding: 20px 45px;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--light-grey);
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerWrapper {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--theme-color-darker);
+  color: var(--white);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  min-height: calc(100vh - 116px);
+}

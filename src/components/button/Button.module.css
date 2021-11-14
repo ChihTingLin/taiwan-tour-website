@@ -1,0 +1,5 @@
+.solid {
+  background-color: var(--theme-color-lighter);
+  border-radius: var(--button-radius);
+  color: var(--white);
+}

@@ -1,0 +1,4 @@
+.input {
+  border-radius: var(--button-radius);
+  border: 1px solid var(--light-grey);
+}

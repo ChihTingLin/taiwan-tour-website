@@ -1,0 +1,34 @@
+:root {
+  --theme-color: #65895F;
+  --theme-color-lighter: #7F977B;
+  --theme-color-darker: #6E7D60;
+  --white: #ffffff;
+  --grey: #646464;
+  --light-grey: #E5E5E5;
+  --black: #1E1E1E;
+  --gold: #BEA363;
+  --orange: #FF725E;
+  --button-radius: 6px;
+  --card-sm-radius: 8px;
+  --card-md-radius: 12px;
+  --card-lg-radius: 24px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a {
+  text-decoration: none;
+  color: var(--theme-color);
+}
