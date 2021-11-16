@@ -15,14 +15,14 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/scenic-spots" element={<ScenicSpots />} />
-          <Route path="/scenic-spot/:ID" element={<ScenicSpotDetail />} />
-          <Route path="/activities" element={<Activities />} />
-          <Route path="/activity/:ID" element={<ActivityDetail />} />
-          <Route path="/city/:city" element={<CityDetail />} />
-          <Route path="/restaurants" element={<Restaurants />} />
-          <Route path="/restaurant/:ID" element={<RestaurantDetail />} />
+          <Route path={process.env.PUBLIC_URL} element={<Home />} />
+          <Route path={`${process.env.PUBLIC_URL}/scenic-spots`} element={<ScenicSpots />} />
+          <Route path={`${process.env.PUBLIC_URL}/scenic-spot/:ID`} element={<ScenicSpotDetail />} />
+          <Route path={`${process.env.PUBLIC_URL}/activities`} element={<Activities />} />
+          <Route path={`${process.env.PUBLIC_URL}/activity/:ID`} element={<ActivityDetail />} />
+          <Route path={`${process.env.PUBLIC_URL}/city/:city`} element={<CityDetail />} />
+          <Route path={`${process.env.PUBLIC_URL}/restaurants`} element={<Restaurants />} />
+          <Route path={`${process.env.PUBLIC_URL}/restaurant/:ID`} element={<RestaurantDetail />} />
         </Routes>
       </Layout>
     </BrowserRouter>
