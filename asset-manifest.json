@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/taiwan-tour-website/static/css/main.3f93991c.chunk.css",
-    "main.js": "/taiwan-tour-website/static/js/main.4b80acd6.chunk.js",
-    "main.js.map": "/taiwan-tour-website/static/js/main.4b80acd6.chunk.js.map",
+    "main.css": "/taiwan-tour-website/static/css/main.fc7d8fee.chunk.css",
+    "main.js": "/taiwan-tour-website/static/js/main.3a3d20d8.chunk.js",
+    "main.js.map": "/taiwan-tour-website/static/js/main.3a3d20d8.chunk.js.map",
     "runtime-main.js": "/taiwan-tour-website/static/js/runtime-main.c78d7d3d.js",
     "runtime-main.js.map": "/taiwan-tour-website/static/js/runtime-main.c78d7d3d.js.map",
     "static/js/2.f812022a.chunk.js": "/taiwan-tour-website/static/js/2.f812022a.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.4043b9aa.chunk.js": "/taiwan-tour-website/static/js/3.4043b9aa.chunk.js",
     "static/js/3.4043b9aa.chunk.js.map": "/taiwan-tour-website/static/js/3.4043b9aa.chunk.js.map",
     "index.html": "/taiwan-tour-website/index.html",
-    "static/css/main.3f93991c.chunk.css.map": "/taiwan-tour-website/static/css/main.3f93991c.chunk.css.map",
+    "static/css/main.fc7d8fee.chunk.css.map": "/taiwan-tour-website/static/css/main.fc7d8fee.chunk.css.map",
     "static/js/2.f812022a.chunk.js.LICENSE.txt": "/taiwan-tour-website/static/js/2.f812022a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c78d7d3d.js",
     "static/js/2.f812022a.chunk.js",
-    "static/css/main.3f93991c.chunk.css",
-    "static/js/main.4b80acd6.chunk.js"
+    "static/css/main.fc7d8fee.chunk.css",
+    "static/js/main.3a3d20d8.chunk.js"
   ]
 }
