@@ -8,7 +8,6 @@ import CityDetail from "./pages/city/CityDetail";
 import Activities from "./pages/activities/Activities";
 import RestaurantDetail from "./pages/restaurants/RestaurantDetail";
 import Restaurants from "./pages/restaurants/Restaurants";
-import "normalize.css";
 
 function App() {
   return (

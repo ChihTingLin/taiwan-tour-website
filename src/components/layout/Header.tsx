@@ -5,11 +5,11 @@ import logo from '../../assets/landscape.png';
 function Header() {
   return (
     <header className={styles.headerWrapper}>
-      <Link className="logo" to="/">
+      <Link className="logo" to={`${process.env.PUBLIC_URL}/`}>
         <img src={logo} alt={logo} width="24" height="24" />
       </Link>
       <nav className="nav">
-        <Link to="/scenic-spots" className="link">
+        <Link to={`${process.env.PUBLIC_URL}/scenic-spots`} className="link">
           探索景點
         </Link>
       </nav>

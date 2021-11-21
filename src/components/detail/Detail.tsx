@@ -4,6 +4,7 @@ import {
   TourismPicture,
   ActivityTourismInfo,
 } from "../../interface";
+import Carousel from "../carousel/Carousel";
 
 interface Props {
   type: "ScenicSpot" | "Restaurant" | "Activity";
@@ -18,14 +19,14 @@ interface Props {
 
 function getPictures(pictures: TourismPicture) {
   let picArr = [];
-  [1,2,3].forEach(n => {
+  [1, 2, 3].forEach((n) => {
     if (pictures[`PictureUrl${n}`]) {
       picArr.push({
         url: pictures[`PictureUrl${n}`],
-        alt: pictures[`PictureDescriptional${n}`],
+        alt: pictures[`PictureDescription${n}`],
       });
     }
-  })
+  });
   return picArr;
 }
 
@@ -41,19 +42,25 @@ export default function Detail({
 }: Props) {
   const images = getPictures(pictures);
   return (
-    <div>
-      <div>
-        {images.map((img) => (
-          <img src={img.url} alt={img.alt} key={img.url}/>
+    <div className="w-3/4 mx-auto">
+      <Carousel images={images} />
+      <h1 className="text-2xl mb-2">{name}</h1>
+      {categories &&
+        categories.map((cat, i) => (
+          <div
+            key={i}
+            className="mr-3 text-yellow-600 inline-block text-sm"
+          >
+            {`#${cat}`}
+          </div>
         ))}
-      </div>
-      <h1>{name}</h1>
-      {categories && categories.map((cat, i) => <div key={i}>{cat}</div>)}
-      <div>
-        {type === "ScenicSpot" && <div>景點介紹</div>}
-        {type === "Activity" && <div>活動介紹：</div>}
-        {type === "Restaurant" && <div>餐廳介紹：</div>}
-        <div>{description}</div>
+      <div className="my-4">
+        <div className="text-xl mb-2">
+          {type === "ScenicSpot" && "景點介紹"}
+          {type === "Activity" && "活動介紹"}
+          {type === "Restaurant" && "餐廳介紹"}
+        </div>
+        <div className="leading-relaxed" dangerouslySetInnerHTML={{__html: description.split("   ").join('<br/>')}} />
       </div>
       <div>
         <div>
@@ -108,7 +115,7 @@ export default function Detail({
               {activity.StartTime && (
                 <div>
                   <span>活動時間: </span>
-                  {`${activity.StartTime} ~ ${activity.EndTime}`}
+                  {`${new Date(activity.StartTime).toLocaleDateString('zh-tw')} ~ ${new Date(activity.EndTime).toLocaleDateString('zh-tw')}`}
                 </div>
               )}
               {activity.Phone && (

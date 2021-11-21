@@ -15,7 +15,7 @@ function Section({
   moreText,
   dataLoaded,
   itemLinkPrefix,
-  listSize=4
+  listSize = 4,
 }: {
   title: string;
   list: any[];
@@ -26,23 +26,34 @@ function Section({
   listSize?: number;
 }) {
   return (
-    <div>
-      <div className="flex flex-row justify-between">
+    <div className="mb-10">
+      <div className="flex flex-row justify-between mb-4">
         <h3 className="text-xl">{title}</h3>
-        <Link to={`${process.env.PUBLIC_URL}${moreLink}`}>{moreText}</Link>
+        <Link to={`${process.env.PUBLIC_URL}${moreLink}`}><span className="text-yellow-600">{moreText}</span></Link>
       </div>
       {dataLoaded && (
-        <div className="flex flex-row justify-between mb-4">
+        <div className="flex flex-row justify-between">
           {Array(listSize)
             .fill("")
             .map((t, i) => {
               const item = list[i];
               return (
-                <div key={item.ID}>
+                <div
+                  key={item.ID}
+                  className="w-1/4 mx-2 text-center rounded-md border border-soild border-gray overflow-hidden"
+                >
                   <Link
                     to={`${process.env.PUBLIC_URL}${itemLinkPrefix}/${item.ID}`}
                   >
-                    {item.Name || item.label}
+                    {item.Picture && (
+                      <div
+                        style={{
+                          backgroundImage: `url(${item.Picture.PictureUrl1})`,
+                        }}
+                        className="h-40 bg-cover bg-no-repeat bg-bottom"
+                      />
+                    )}
+                    <div className="py-2 px-4">{item.Name || item.label}</div>
                   </Link>
                 </div>
               );
@@ -73,7 +84,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="mb-4">
+      <div className="mb-8">
         <div>
           <h1 className="text-4xl leading-snug">
             探索台灣之美
@@ -118,7 +129,7 @@ export default function Home() {
         title="熱門城市"
         moreText="所有城市"
         moreLink="/citiy"
-        list={cityList.filter(c => c.isPopular)}
+        list={cityList.filter((c) => c.isPopular)}
         dataLoaded={dataLoaded}
         itemLinkPrefix="/city"
         listSize={8}
