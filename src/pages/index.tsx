@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { cityList } from "../staticData";
 import { fetchMixedTourismData } from "../fetchData";
@@ -8,6 +8,51 @@ import {
   ScenicSpotTourismInfo,
 } from "../interface";
 
+function Section({
+  title,
+  list,
+  moreLink,
+  moreText,
+  dataLoaded,
+  itemLinkPrefix,
+  listSize=4
+}: {
+  title: string;
+  list: any[];
+  moreLink: string;
+  moreText: string;
+  dataLoaded: boolean;
+  itemLinkPrefix: string;
+  listSize?: number;
+}) {
+  return (
+    <div>
+      <div className="flex flex-row justify-between">
+        <h3 className="text-xl">{title}</h3>
+        <Link to={`${process.env.PUBLIC_URL}${moreLink}`}>{moreText}</Link>
+      </div>
+      {dataLoaded && (
+        <div className="flex flex-row justify-between mb-4">
+          {Array(listSize)
+            .fill("")
+            .map((t, i) => {
+              const item = list[i];
+              return (
+                <div key={item.ID}>
+                  <Link
+                    to={`${process.env.PUBLIC_URL}${itemLinkPrefix}/${item.ID}`}
+                  >
+                    {item.Name || item.label}
+                  </Link>
+                </div>
+              );
+            })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Home() {
   const [dataLoaded, setDataLoaded] = useState<boolean>(false);
   const [activities, setActivities] = useState<ActivityTourismInfo[]>([]);
@@ -15,21 +60,22 @@ export default function Home() {
   const [scenicSpots, setScenicSpot] = useState<ScenicSpotTourismInfo[]>([]);
 
   useEffect(() => {
-    fetchMixedTourismData({numToDisplay: 4, requiredFields: ['ID', 'Picture', 'Name']}).then(
-      ({ restaurants, scenicSpots, activities }) => {
-        setScenicSpot(scenicSpots);
-        setActivities(activities);
-        setRestaurants(restaurants);
-        setDataLoaded(true);
-      }
-    );
+    fetchMixedTourismData({
+      numToDisplay: 4,
+      requiredFields: ["ID", "Picture", "Name"],
+    }).then(({ restaurants, scenicSpots, activities }) => {
+      setScenicSpot(scenicSpots);
+      setActivities(activities);
+      setRestaurants(restaurants);
+      setDataLoaded(true);
+    });
   }, []);
 
   return (
     <div>
-      <div className="display-flex flex-between">
+      <div className="mb-4">
         <div>
-          <h1>
+          <h1 className="text-4xl leading-snug">
             探索台灣之美
             <br />
             讓我們更親近這片土地
@@ -44,68 +90,40 @@ export default function Home() {
         </div> */}
       </div>
       {/* <div className="carousel">新北市 | 不厭亭</div> */}
-      <div>
-        <div className="display-flex flex-between">
-          <h3>近期活動</h3>
-          <Link to="/activities">查看更多活動</Link>
-        </div>
-        {dataLoaded && (
-          <div>
-            {/* activity cards */}
-            {Array(4)
-              .fill("")
-              .map((t, i) => {
-                const act = activities[i];
-                return (
-                  <div key={act.ID}>
-                    <Link to={`/activity/${act.ID}`}>{act.Name}</Link>
-                  </div>
-                );
-              })}
-          </div>
-        )}
-      </div>
-      <div>
-        <div className="display-flex flex-between">
-          <h3>熱門打卡景點</h3>
-          <Link to="/scenic-spots">查看更多景點</Link>
-        </div>
-        <div>
-          {/* acttraction cards */}
-          {dataLoaded &&
-            scenicSpots.map((scen) => (
-              <div key={scen.ID}>
-                <Link to={`/scenic-spot/${scen.ID}`}>{scen.Name}</Link>
-              </div>
-            ))}
-        </div>
-      </div>
-      <div>
-        <div className="display-flex flex-between">
-          <h3>一再回訪美食</h3>
-          <Link to="/restaurants">查看更多美食</Link>
-        </div>
-        <div>
-          {/* restaurtant cards */}
-          {dataLoaded &&
-            restaurants.map((rest) => (
-              <div key={rest.ID}>
-                <Link to={`/restaurant/${rest.ID}`}>{rest.Name}</Link>
-              </div>
-            ))}
-        </div>
-      </div>
+      <Section
+        title="近期活動"
+        moreText="查看更多活動"
+        moreLink="/activities"
+        list={activities}
+        dataLoaded={dataLoaded}
+        itemLinkPrefix="/activity"
+      />
+      <Section
+        title="熱門打卡景點"
+        moreText="查看更多景點"
+        moreLink="/scenic-spots"
+        list={scenicSpots}
+        dataLoaded={dataLoaded}
+        itemLinkPrefix="/scenic-spot"
+      />
+      <Section
+        title="一再回訪美食"
+        moreText="查看更多美食"
+        moreLink="/restaurants"
+        list={restaurants}
+        dataLoaded={dataLoaded}
+        itemLinkPrefix="/restaurant"
+      />
+      <Section
+        title="熱門城市"
+        moreText="所有城市"
+        moreLink="/citiy"
+        list={cityList.filter(c => c.isPopular)}
+        dataLoaded={dataLoaded}
+        itemLinkPrefix="/city"
+        listSize={8}
+      />
 
-      <h3>熱門城市</h3>
-      <div>
-        {cityList
-          .filter((c) => c.isPopular)
-          .map((city) => (
-            <div key={city.value}>
-              <Link to={`/city/${city.value}`}>{city.label}</Link>
-            </div>
-          ))}
-      </div>
       {/* <h3>熱門活動</h3>
       <div>
         {activities.map((act) => (
